@@ -1,0 +1,94 @@
+import java.util.Scanner;
+
+public class LibrarySystem {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Library System");
+        System.out.print("Login as Staff? (yes/no): ");
+        String loginType = scanner.nextLine();
+
+        if (loginType.equalsIgnoreCase("yes")) {
+            System.out.println("Logged in as Admin (Librarian)");
+            System.out.print("Do you want to manage books? (yes/no): ");
+            String manageBooks = scanner.nextLine();
+
+            if (manageBooks.equalsIgnoreCase("yes")) {
+                addRemoveBooks(scanner);
+            } else {
+                addRemoveMembers(scanner);
+            }
+        } else {
+            System.out.println("Logged in as User");
+            System.out.print("Do you want to borrow a book? (yes/no): ");
+            String borrowBook = scanner.nextLine();
+
+            if (borrowBook.equalsIgnoreCase("yes")) {
+                searchBook(scanner);
+            } else {
+                returnBook(scanner);
+            }
+        }
+        
+        System.out.println("Exiting Library System...");
+        scanner.close();
+    }
+
+    // Method to add or remove books for Admin
+    private static void addRemoveBooks(Scanner scanner) {
+        System.out.print("Add or Remove books? (add/remove): ");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("add")) {
+            System.out.println("Adding a new book to the system...");
+            // Code to add a new book
+        } else if (choice.equalsIgnoreCase("remove")) {
+            System.out.println("Removing a book from the system...");
+            // Code to remove a book
+        } else {
+            System.out.println("Invalid choice.");
+        }
+    }
+
+    // Method to add or remove members for Admin
+    private static void addRemoveMembers(Scanner scanner) {
+        System.out.print("Add or Remove members? (add/remove): ");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("add")) {
+            System.out.println("Adding a new member to the system...");
+            // Code to add a new member
+        } else if (choice.equalsIgnoreCase("remove")) {
+            System.out.println("Removing a member from the system...");
+            // Code to remove a member
+        } else {
+            System.out.println("Invalid choice.");
+        }
+    }
+
+    // Method to search and borrow a book for User
+    private static void searchBook(Scanner scanner) {
+        System.out.println("Searching for a book...");
+        System.out.print("Is the book available? (yes/no): ");
+        String available = scanner.nextLine();
+
+        if (available.equalsIgnoreCase("yes")) {
+            System.out.println("Borrowing the book...");
+            // Code to borrow the book
+        } else {
+            System.out.println("The book is not available.");
+            System.out.print("Do you want to search for another book? (yes/no): ");
+            String searchAgain = scanner.nextLine();
+            if (searchAgain.equalsIgnoreCase("yes")) {
+                searchBook(scanner);
+            } else {
+                System.out.println("Returning to main menu...");
+            }
+        }
+    }
+
+    // Method to return a book for User
+    private static void returnBook(Scanner scanner) {
+        System.out.println("Returning a book...");
+        // Code to return a book
+    }
+}
