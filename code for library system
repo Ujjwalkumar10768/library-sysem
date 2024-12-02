@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class LibrarySystem {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Library System");
+        System.out.print("Login as Staff? (yes/no): ");
+        String loginType = scanner.nextLine();
+
+        if (loginType.equalsIgnoreCase("yes")) {
+            System.out.println("Logged in as Admin (Librarian)");
+            System.out.print("Do you want to manage books? (yes/no): ");
+            String manageBooks = scanner.nextLine();
+
+            if (manageBooks.equalsIgnoreCase("yes")) {
+                addRemoveBooks(scanner);
+            } else {
+                addRemoveMembers(scanner);
+            }
+        } else {
+            System.out.println("Logged in as User");
+            System.out.print("Do you want to borrow a book? (yes/no): ");
+            String borrowBook = scanner.nextLine();
+
+            if (borrowBook.equalsIgnoreCase("yes")) {
+                searchBook(scanner);
+            } else {
+                returnBook(scanner);
+            }
+        }
+        
+        System.out.println("Exiting Library System...");
+        scanner.close();
+    }
